@@ -13,7 +13,11 @@ for ch in range(ord('A'),ord('Z') + 1) :
 	lines = fr.readlines()
 	for line in lines :
 		line = line.replace('\n','')
-		line = line[1:len(line)-1]
+		if len(line) > 0 :
+			if line[0] in ['\'','\"']  :
+				line = line[1:]
+			if line[-1] in ['\'','\"'] :
+				line = line[:-1]
 		if len(line) > 0 :
 			cut_index = line.find(' ')
 			word = line[:cut_index].lower()
