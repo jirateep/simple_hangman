@@ -30,6 +30,16 @@ def display_man(wrong) :
 			wrong -= 1
 		print()
 
+def print_end(correct,meaning) :
+	if correct==0 :
+		print('YOU WIN!!')
+	else :
+		print('YOU LOSE!!')
+	print(f'word: {random_word}')
+	print('meaning:')
+	for description in meaning :
+		print(f'\t{description}')
+
 fr = open('dict.txt','r')
 line = fr.read()
 fr.close()
@@ -60,4 +70,4 @@ while wrong < 9 and correct > 0:
 		print(f'Don\'t have letter {guess}.')
 		wrong += 1
 	already_guess.append(guess)
-
+print_end(correct, word_list[random_word])
