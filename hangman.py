@@ -61,7 +61,6 @@ line = fr.read()
 fr.close()
 word_list = ast.literal_eval(line)
 random_word = random.choice(list(word_list.keys()))
-print(random_word)
 wrong = 0
 already_guess = []
 is_win = False
@@ -72,6 +71,9 @@ while is_play :
 		display_man(wrong)
 		display_word(random_word,already_guess)
 		guess = str(input('guess character/show already guess[show]: ')).lower()
+		if guess == 'hint' :
+			print(random_word)
+			continue
 		if guess == 'show' :
 			print(color(str(already_guess),'blue'))
 			continue
