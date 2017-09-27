@@ -1,4 +1,5 @@
 #download dict here: http://www.bragitoff.com/2016/03/english-dictionary-in-csv-format/
+from pprint import pprint
 
 def is_included_symbols(word) :
 	for ch in word :
@@ -7,7 +8,7 @@ def is_included_symbols(word) :
 	return False
 
 fw = open('dict.txt','w')
-word_list = []
+word_list = {}
 for ch in range(ord('A'),ord('Z') + 1) :
 	fr = open('Dictionary/' + chr(ch) + '.csv', 'r')
 	lines = fr.readlines()
@@ -20,6 +21,10 @@ for ch in range(ord('A'),ord('Z') + 1) :
 			if len(word) <= 1 or is_included_symbols(word) :
 				continue
 			description = line[cut_index+1:]
-			word_list.append({'word':word, 'description':[description]})
-			print(word_list)
-			input()
+			if word in word_list :
+				word_list[word].append(description)
+			else :
+				word_list[word] = [description]
+			
+	pprint(word_list)
+	input()
