@@ -66,27 +66,35 @@ wrong = 0
 already_guess = []
 is_win = False
 correct = len(random_word)
-while wrong < 9 and correct > 0:
-	display_man(wrong)
-	display_word(random_word,already_guess)
-	guess = str(input('guess character/show already guess[show]: ')).lower()
-	if guess == 'show' :
-		print(color(str(already_guess),'blue'))
-		continue
-	if len(guess) != 1 :
-		print(color('Try again, length != 1.','yellow'))
-		continue
-	if not ord('a') <= ord(guess) <= ord('z') :
-		print(color('Try again, character including symbol.','yellow'))
-		continue
-	if guess in already_guess :
-		print(color('Try again, you already guess.','yellow'))
-		continue
-	if guess in random_word :
-		print(color(f'Have letter {guess}.','green'))
-		correct -= random_word.count(guess)
-	else :
-		print(color(f'Don\'t have letter {guess}.','red'))
-		wrong += 1
-	already_guess.append(guess)
+is_play = True
+while is_play :
+	while wrong < 9 and correct > 0:
+		display_man(wrong)
+		display_word(random_word,already_guess)
+		guess = str(input('guess character/show already guess[show]: ')).lower()
+		if guess == 'show' :
+			print(color(str(already_guess),'blue'))
+			continue
+		if len(guess) != 1 :
+			print(color('Try again, length != 1.','yellow'))
+			continue
+		if not ord('a') <= ord(guess) <= ord('z') :
+			print(color('Try again, character including symbol.','yellow'))
+			continue
+		if guess in already_guess :
+			print(color('Try again, you already guess.','yellow'))
+			continue
+		if guess in random_word :
+			print(color(f'Have letter {guess}.','green'))
+			correct -= random_word.count(guess)
+		else :
+			print(color(f'Don\'t have letter {guess}.','red'))
+			wrong += 1
+		already_guess.append(guess)
+		play_again = ''
+		while play_again != 'y' and play_again != 'n' :
+			play_again = input('Do you want to play again?[y/n] ').lower()
+		if play_again == 'n' :
+			play_again = False
+
 print_end(correct, word_list[random_word])
