@@ -7,7 +7,6 @@ def is_included_symbols(word) :
 			return True
 	return False
 
-fw = open('dict.txt','w')
 word_list = {}
 for ch in range(ord('A'),ord('Z') + 1) :
 	fr = open('Dictionary/' + chr(ch) + '.csv', 'r')
@@ -25,6 +24,9 @@ for ch in range(ord('A'),ord('Z') + 1) :
 				word_list[word].append(description)
 			else :
 				word_list[word] = [description]
-			
-	pprint(word_list)
-	input()
+	fr.close()
+	#print('finished: '+chr(ch))
+
+fw = open('dict.txt','w')
+fw.write(str(word_list))
+fw.close()
