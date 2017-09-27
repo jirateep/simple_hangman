@@ -75,7 +75,7 @@ while is_play :
 			print(random_word)
 			continue
 		if guess == 'show' :
-			print(color(str(already_guess),'blue'))
+			print(color('show: 'str(already_guess)[1:-1],'blue'))
 			continue
 		if len(guess) != 1 :
 			print(color('Try again, length != 1.','yellow'))
