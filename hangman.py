@@ -92,9 +92,9 @@ while is_play :
 			wrong += 1
 		already_guess.append(guess)
 		play_again = ''
-		while play_again != 'y' and play_again != 'n' :
-			play_again = input('Do you want to play again?[y/n] ').lower()
-		if play_again == 'n' :
-			play_again = False
+	while play_again != 'y' and play_again != 'n' :
+		play_again = input('Do you want to play again?[y/n] ').lower()
+	if play_again == 'n' :
+		play_again = False
 
 print_end(correct, word_list[random_word])
