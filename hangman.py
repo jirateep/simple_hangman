@@ -67,6 +67,8 @@ while is_play :
 	wrong = 0
 	correct = len(random_word)
 	already_guess = []
+	os.system('cls')
+	print('Start!!')
 	while wrong < 9 and correct > 0:
 		display_man(wrong)
 		display_word(random_word,already_guess)
