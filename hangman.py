@@ -69,7 +69,10 @@ correct = len(random_word)
 while wrong < 9 and correct > 0:
 	display_man(wrong)
 	display_word(random_word,already_guess)
-	guess = str(input('guess character: ')).lower()
+	guess = str(input('guess character/show already guess[show]: ')).lower()
+	if guess == 'show' :
+		print(color(str(already_guess),'blue'))
+		continue
 	if len(guess) != 1 :
 		print(color('Try again, length != 1.','yellow'))
 		continue
