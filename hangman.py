@@ -71,11 +71,12 @@ while is_play :
 		display_man(wrong)
 		display_word(random_word,already_guess)
 		guess = str(input('guess character/show already guess[show]: ')).lower()
+		os.system('cls')
 		if guess == 'hint' :
 			print(random_word)
 			continue
 		if guess == 'show' :
-			print(color('show: 'str(already_guess)[1:-1],'blue'))
+			print(color('show: ' + str(already_guess)[1:-1],'blue'))
 			continue
 		if len(guess) != 1 :
 			print(color('Try again, length != 1.','yellow'))
@@ -93,8 +94,10 @@ while is_play :
 			print(color(f'Don\'t have letter {guess}.','red'))
 			wrong += 1
 		already_guess.append(guess)
-		play_again = ''
+
 	print_end(correct, word_list[random_word])
+	
+	play_again = ''
 	while play_again != 'y' and play_again != 'n' :
 		play_again = input('Do you want to play again?[y/n] ').lower()
 	if play_again == 'n' :
