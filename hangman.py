@@ -38,7 +38,9 @@ random_word = random.choice(list(word_list.keys()))
 print(random_word)
 wrong = 0
 already_guess = []
-while wrong < 9 :
+is_win = False
+correct = len(random_word)
+while wrong < 9 and correct > 0:
 	display_man(wrong)
 	display_word(random_word,already_guess)
 	guess = str(input('guess character: ')).lower()
@@ -53,7 +55,9 @@ while wrong < 9 :
 		continue
 	if guess in random_word :
 		print(f'Have letter {guess}.')
+		correct -= random_word.count(guess)
 	else :
 		print(f'Don\'t have letter {guess}.')
 		wrong += 1
 	already_guess.append(guess)
+
