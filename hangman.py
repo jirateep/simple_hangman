@@ -23,9 +23,12 @@ while wrong < 10 :
 	display_word(random_word,already_guess)
 	guess = str(input('guess character: ')).lower()
 	if len(guess) != 1 :
-		print('ERROR: length != 1')
+		print('Try again, length != 1.')
 		continue
 	if not ord('a') <= ord(guess) <= ord('z') :
-		print('ERROR: character including symbol')
+		print('Try again, character including symbol.')
+		continue
+	if guess in already_guess :
+		print('Try again, you already guess.')
 		continue
 	already_guess.append(guess)
