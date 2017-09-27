@@ -60,13 +60,13 @@ fr = open('dict.txt','r')
 line = fr.read()
 fr.close()
 word_list = ast.literal_eval(line)
-random_word = random.choice(list(word_list.keys()))
-wrong = 0
-already_guess = []
-is_win = False
-correct = len(random_word)
 is_play = True
+
 while is_play :
+	random_word = random.choice(list(word_list.keys()))
+	wrong = 0
+	correct = len(random_word)
+	already_guess = []
 	while wrong < 9 and correct > 0:
 		display_man(wrong)
 		display_word(random_word,already_guess)
