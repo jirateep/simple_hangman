@@ -59,8 +59,8 @@ def print_end(correct,meaning) :
 def show_not_use(word_list) :
 	new_word_list = []
 	for i in range(ord('a'),ord('z')+1) :
-		if not i in word_list :
-			new_word_list.append(i)
+		if not chr(i) in word_list :
+			new_word_list.append(chr(i))
 	return new_word_list
 
 fr = open('dict.txt','r')
@@ -89,7 +89,7 @@ while is_play :
 			print(color('show: ' + str(sort(already_guess))[1:-1],'blue'))
 			continue
 		if guess == 'show_invert' :
-			print(color('show: ' + str(not_use(already_guess))[1:-1],'blue'))
+			print(color('show: ' + str(show_not_use(already_guess))[1:-1],'blue'))
 			continue
 		if guess == 'show' :
 			print(color('show: ' + str(already_guess)[1:-1],'blue'))
