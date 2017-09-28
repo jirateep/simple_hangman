@@ -56,6 +56,13 @@ def print_end(correct,meaning) :
 		print(f'\t{description}')
 	print('_________________________________')
 
+def show_not_use(word_list) :
+	new_word_list = []
+	for i in range(ord('a'),ord('z')+1) :
+		if not i in word_list :
+			new_word_list.append(i)
+	return new_word_list
+
 fr = open('dict.txt','r')
 line = fr.read()
 fr.close()
@@ -72,10 +79,17 @@ while is_play :
 	while wrong < 9 and correct > 0:
 		display_man(wrong)
 		display_word(random_word,already_guess)
-		guess = str(input('guess character/show already guess[show]: ')).lower()
+		guess = str(input('guess character/[show]/[show_sort]/[show_invert]: ')).lower()
 		os.system('cls')
+
 		if guess == 'hint' :
 			print(random_word)
+			continue
+		if guess == 'show_sort' :
+			print(color('show: ' + str(sort(already_guess))[1:-1],'blue'))
+			continue
+		if guess == 'show_invert' :
+			print(color('show: ' + str(not_use(already_guess))[1:-1],'blue'))
 			continue
 		if guess == 'show' :
 			print(color('show: ' + str(already_guess)[1:-1],'blue'))
